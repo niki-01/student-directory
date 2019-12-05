@@ -8,13 +8,16 @@ def input_students
   while !name.empty? do
     puts "Please enter the student's favourite hobby"
     hobby = gets.chomp
+    hobby = "N/A" if hobby.empty? == true
     puts "Please enter the student's country of birth"
     country = gets.chomp
+    country = "N/A" if country.empty? == true
     puts "Please enter the student's cohort"
     cohort = gets.chomp
-    students << {name: name, hobby: hobby, country: country, cohort: cohort} # add the student hash to the array
+    cohort = "N/A" if cohort.empty? == true
+    students << {name: name, hobby: hobby, country: country, cohort: cohort}
     puts "Now we have #{students.count} student(s)"
-    puts "Please enter another name, or hit return twice"
+    puts "Please enter another name, or hit return to exit"
     
     name = gets.chomp
   end
@@ -36,7 +39,7 @@ count = 0
 end
 
 def print_footer(students)
-  puts "Overall, we have #{students.count} great students".center(51)
+  puts "Overall, we have #{students.count} great student(s)".center(51)
 end
 
 students = input_students
