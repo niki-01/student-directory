@@ -6,33 +6,27 @@ def input_students
   name = gets.chomp
   
   while !name.empty? do
-    if name[0] == "A"
-      students << {name: name, cohort: :november} # add the student hash to the array
-      puts "Now we have #{students.count} students"
-      
-      name = gets.chomp
-    else
-      puts "Please enter a name that starts with 'A' "
-      name = gets.chomp
-    end
+    students << {name: name, cohort: :november} # add the student hash to the array
+    puts "Now we have #{students.count} students"
+    
+    name = gets.chomp
   end
   
   students
 end
-
 
 def print_header
   puts "The students of Villains Academy"
   puts "-------------"
 end
 
-
 def print(students)
-  students.each_with_index do |student, index|
-    puts "#{index + 1}. #{student[:name]} (#{student[:cohort]} cohort)"
+count = 0
+  until count >= students.length
+    puts "#{students[count][:name]} (#{students[count][:cohort]} cohort)"
+    count += 1
   end
 end
-
 
 def print_footer(students)
   puts "Overall, we have #{students.count} great students"
