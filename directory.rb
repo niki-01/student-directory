@@ -3,7 +3,7 @@ def input_students
   puts "To finish, just hit return twice"
   
   students = []
-  name = gets.chomp
+  name = gets.split
   
   cohort_months = {
     "" => "N/A", "January" => :January, "February" => :February, "March" => :March, 
@@ -14,10 +14,10 @@ def input_students
   
   while !name.empty? do
     puts "Please enter the student's cohort"
-    cohort = cohort_months[gets.capitalize.chomp]
+    cohort = cohort_months[gets.capitalize.split]
     while cohort == nil do
       puts "An error occured \nPlease enter the student's cohort"
-      cohort = cohort_months[gets.capitalize.chomp]
+      cohort = cohort_months[gets.capitalize.split]
     end
 
     students << {name: name, cohort: cohort}
@@ -28,7 +28,7 @@ def input_students
     end
     puts "Please enter another name, or hit return to exit"
     
-    name = gets.chomp
+    name = gets.split
   end
   
   students
@@ -44,7 +44,7 @@ end
 
 def print_by_cohort(students)
   puts "Which cohort would you like?"
-  input = gets.chomp.capitalize
+  input = gets.split.capitalize
   puts "The students of Villains Academy".center(50)
   puts "-------------".center(53)
   
