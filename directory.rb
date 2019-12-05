@@ -6,13 +6,13 @@ def input_students
   name = gets.chomp
   
   while !name.empty? do
-    if name.length < 12
+    if name[0] == "A"
       students << {name: name, cohort: :november} # add the student hash to the array
       puts "Now we have #{students.count} students"
       
       name = gets.chomp
     else
-      puts "Please enter a name that does not exceed 12 characters"
+      puts "Please enter a name that starts with 'A' "
       name = gets.chomp
     end
   end
