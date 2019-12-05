@@ -5,6 +5,13 @@ def input_students
   students = []
   name = gets.chomp
   
+  cohort_months = {
+    "" => "N/A", "January" => :January, "February" => :February, "March" => :March, 
+    "April" => :April, "May" => :May, "June" => :June, "July" => :July, 
+    "August" => :August, "September" => :September, "October" => :October, 
+    "November" => :November, "December" => :December}
+
+  
   while !name.empty? do
     puts "Please enter the student's favourite hobby"
     hobby = gets.chomp
@@ -12,9 +19,14 @@ def input_students
     puts "Please enter the student's country of birth"
     country = gets.chomp
     country = "N/A" if country.empty? == true
+    
     puts "Please enter the student's cohort"
-    cohort = gets.chomp
-    cohort = "N/A" if cohort.empty? == true
+    cohort = cohort_months[gets.capitalize.chomp]
+    while cohort == nil do
+      puts "An error occured \nPlease enter the student's cohort"
+      cohort = cohort_months[gets.capitalize.chomp]
+    end
+
     students << {name: name, hobby: hobby, country: country, cohort: cohort}
     puts "Now we have #{students.count} student(s)"
     puts "Please enter another name, or hit return to exit"
