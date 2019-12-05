@@ -6,8 +6,13 @@ def input_students
   name = gets.chomp
   
   while !name.empty? do
-    students << {name: name, cohort: :november} # add the student hash to the array
-    puts "Now we have #{students.count} students"
+    puts "Please enter the student's favourite hobby"
+    hobby = gets.chomp
+    puts "Please enter the student's country of birth"
+    country = gets.chomp
+    students << {name: name, hobby: hobby, country: country, cohort: :november} # add the student hash to the array
+    puts "Now we have #{students.count} student(s)"
+    puts "Please enter another name, or hit return twice"
     
     name = gets.chomp
   end
@@ -23,7 +28,7 @@ end
 def print(students)
 count = 0
   until count >= students.length
-    puts "#{students[count][:name]} (#{students[count][:cohort]} cohort)"
+    puts "#{students[count][:name]} (Hobby: #{students[count][:hobby]}) (Country: #{students[count][:country]}) (Cohort: #{students[count][:cohort]})"
     count += 1
   end
 end
